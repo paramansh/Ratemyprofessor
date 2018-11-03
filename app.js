@@ -34,6 +34,7 @@ const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
 const profController = require('./controllers/prof');
 const contactController = require('./controllers/contact');
+const livesearchController = require('./controllers/livesearch.js');
 
 /**
  * API keys and Passport configuration.
@@ -144,6 +145,7 @@ app.post('/account/delete', passportConfig.isAuthenticated, userController.postD
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
 app.get('/professor', profController.index);
 app.get('/professor/:profname', profController.getProf);
+app.get('/livesearch', livesearchController.index)
 
 
 /**

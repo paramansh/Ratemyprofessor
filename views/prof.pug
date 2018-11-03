@@ -1,5 +1,12 @@
 extends layout 
 
+
+//- h1 Professor_Name
+//-   h2 Department_of
+//-   h3=profname
+//-   |
+//-   |
+//-   h2 Rating
 block content
   .profile
     table#central(align='center')
@@ -7,13 +14,13 @@ block content
         tr
           td
             p
-              img(style='width: 150px;', src='prof.jpg', alt='')
+              img(style='width: 150px;', src='/prof.jpg', alt='')
           td
             p
               strong    
           td
             p
-              strong Name
+              strong=profname 
             p Department
             p
               strong Home Page: 

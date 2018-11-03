@@ -4,9 +4,10 @@ const mongoose = require('mongoose');
 
 
 const profSchema = mongoose.Schema({
+    id:  { type: String, unique: true },
     profile: {
         name: String,
-        email: { type: String, unique: true },
+        email: String,
         // Department: String,
         // homepage: String,
         // age: Number,
