@@ -9,9 +9,16 @@ exports.index = (req, res) => {
 exports.getProf = (req,res) => {
   profname = req.params.profname;
   const prof = new Professor({
-    age: 25,
-    name: profname,
-    nationality: 'India'
+    profile: {
+      name: profname,
+      email: profname + "@iitk.ac.in",
+  },
+  rating: {
+      param1: 1,
+      param2: 2,
+      param3: 3,
+      param4: 4,
+  }
   });
   
   prof.save(function(err, Professor){

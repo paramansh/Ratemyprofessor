@@ -6,21 +6,21 @@ const mongoose = require('mongoose');
 const profSchema = mongoose.Schema({
     profile: {
         name: String,
-        email: String,
-        Department: String,
-        homepage: String,
-        age: Number,
-        nationality: String
+        email: { type: String, unique: true },
+        // Department: String,
+        // homepage: String,
+        // age: Number,
+        // nationality: String
     },
     rating: {
-        param1: Float,
-        param2: Float,
-        param3: Float,
-        param4: Float,
+        param1: Number,
+        param2: Number,
+        param3: Number,
+        param4: Number,
     }
-    comments: {
-        c: String,
-    }
+    // comments: {
+    //     c: String,
+    // }
  });
 
 const Professor = mongoose.model("Professor", profSchema);

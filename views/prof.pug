@@ -1,10 +1,62 @@
-extends layout
+extends layout 
 
 block content
-  h1 Professor_Name
-  h2 Department_of
-  h3=profname
-  |
-  |
-  h2 Rating
-//-   img(src="/views/abc.jpg", alt="Random Image")
+  .profile
+    table#central(align='center')
+      tbody
+        tr
+          td
+            p
+              img(style='width: 150px;', src='prof.jpg', alt='')
+          td
+            p
+              strong    
+          td
+            p
+              strong Name
+            p Department
+            p
+              strong Home Page: 
+              | <a href="https://www.cse.iitk.ac.in/users/nsrivast/">Professor Home_Page </a>
+  h1 RATINGS 
+  p How well he teaches ?
+  span.fa.fa-star.checked
+  span.fa.fa-star.checked
+  span.fa.fa-star.checked
+  span.fa.fa-star
+  span.fa.fa-star
+  p How fun is his research area ?
+  span.fa.fa-star.checked
+  span.fa.fa-star.checked
+  span.fa.fa-star.checked
+  span.fa.fa-star.checked
+  span.fa.fa-star
+  p How he grades ?
+  span.fa.fa-star.checked
+  span.fa.fa-star.checked
+  span.fa.fa-star.checked
+  span.fa.fa-star.checked
+  span.fa.fa-star.checked
+  p How strict he is about attendance/deadlines ?
+  span.fa.fa-star.checked
+  span.fa.fa-star.checked
+  span.fa.fa-star
+  span.fa.fa-star
+  span.fa.fa-star
+  style.
+    .checked {
+    color: orange;
+    }
+  .pb-2.mt-2.mb-4.border-bottom
+  div(style='background-color:yellow;color:red;padding:20px;')
+    h2 
+      p(style='color:black;')
+        b Comments About the Professor 
+    li
+      p The prof is chill in grading.
+    li
+      p Don't you to dare take his course :D 
+
+  
+
+
