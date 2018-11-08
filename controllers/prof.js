@@ -7,14 +7,17 @@ exports.index = (req, res) => {
 };
 
 exports.getProf = (req,res) => {
-  profname = req.params.profname; // actually the email id
-  Professor.find({id: profname}, (err, user) => {
+  profid = req.params.profid; // actually the email id
+
+  Professor.findOne({id: profid}, (err, prof) => {
     if (err){console.log("Invalid Professor ID");}
     else{
-      console.log(user);
+      console.log(prof);
+      // console.log(prof.courses);
       res.render('prof', {
         title: 'Professor',
-        profname: profname
+        profile: prof.profile,
+        // comments: prof.comments 
       });
     }
   });

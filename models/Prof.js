@@ -4,24 +4,21 @@ const mongoose = require('mongoose');
 
 
 const profSchema = mongoose.Schema({
-    id:  { type: String, unique: true },
+    id:  { type: String, unique: true }, //IITK username (currently cse username)
     profile: {
         name: String,
-        email: String,
-        // Department: String,
-        // homepage: String,
-        // age: Number,
-        // nationality: String
+        email: String, // email and homepage from ID
+        department: String,
+        homepage: String,
     },
+    courses: [String],
     rating: {
         param1: Number,
         param2: Number,
         param3: Number,
         param4: Number,
-    }
-    // comments: {
-    //     c: String,
-    // }
+    },
+    comments: [String]
  });
 
 const Professor = mongoose.model("Professor", profSchema);
