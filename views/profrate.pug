@@ -17,8 +17,9 @@ block content
               strong #{profile.name} 
             p Department #{profile.department} 
             p
-              strong Home Page: 
-              | <a href="https://www.cse.iitk.ac.in/users/nsrivast/">Professor Home_Page </a>
+              - var href = profile.homepage;
+              h4              
+                a(href=href) Homepage
   form(method='POST')
     input(type='hidden', name='_csrf', value=_csrf)
     if (unknownUser)
@@ -40,6 +41,11 @@ block content
           label(class='col-md-2 col-form-label font-weight-bold', for='param4') param4
           .col-md-4
             input.form-control(type='number', min="0", max="5", name='param4', id='param4', autocomplete='name', autofocus=true)
+      .form-group.row
+          label(class='col-md-2 col-form-label font-weight-bold', for='message') Your Comments
+          .col-md-8
+            textarea.form-control(name='message', id='message', rows='3', autofocus=(!unknownUser).toString())
+      
       .form-group
         .offset-md-2.col-md-8.p-1
           button.btn.btn-primary(type='submit')

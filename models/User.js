@@ -2,6 +2,14 @@ const bcrypt = require('bcrypt-nodejs');
 const crypto = require('crypto');
 const mongoose = require('mongoose');
 
+const profRateSchema = new mongoose.Schema({
+  id: String,
+  param1: Number,
+  param2: Number,
+  param3: Number,
+  param4: Number,
+});
+
 const userSchema = new mongoose.Schema({
   email: { type: String, unique: true },
   password: String,
@@ -23,7 +31,8 @@ const userSchema = new mongoose.Schema({
     location: String,
     website: String,
     picture: String
-  }
+  },
+  ratings: [profRateSchema]
 }, { timestamps: true });
 
 /**

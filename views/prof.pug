@@ -23,28 +23,40 @@ block content
               strong #{profile.name} 
             p Department #{profile.department} 
             p
-              strong Home Page: 
-              | <a href="https://www.cse.iitk.ac.in/users/nsrivast/">Professor Home_Page </a>
+              - var href = profile.homepage;
+              h4              
+                a(href=href) Homepage
+  if (has_rated)
+    h3 You have already rated
+      //- h2 <a href="/professor/"+profid + "/rate/"> Update Rating </a> 
+      h4 param1 = #{user_ratings.param1}
+      h4 param2 = #{user_ratings.param2}
+      h4 param3 = #{user_ratings.param3}
+      h4 param4 = #{user_ratings.param4}
+  else
+      - var href = "/professor/" + profid+"/rate/";
+      h4
+        a(href=href) Rate 
   h1 RATINGS 
-  p How well he teaches ?
+  p How well he teaches ? #{ratings.param1}
   span.fa.fa-star.checked
   span.fa.fa-star.checked
   span.fa.fa-star.checked
   span.fa.fa-star
   span.fa.fa-star
-  p How fun is his research area ?
+  p How fun is his research area ? #{ratings.param2}
   span.fa.fa-star.checked
   span.fa.fa-star.checked
   span.fa.fa-star.checked
   span.fa.fa-star.checked
   span.fa.fa-star
-  p How he grades ?
+  p How he grades ? #{ratings.param3}
   span.fa.fa-star.checked
   span.fa.fa-star.checked
   span.fa.fa-star.checked
   span.fa.fa-star.checked
   span.fa.fa-star.checked
-  p How strict he is about attendance/deadlines ?
+  p How strict he is about attendance/deadlines ? #{ratings.param4}
   span.fa.fa-star.checked
   span.fa.fa-star.checked
   span.fa.fa-star
