@@ -1,0 +1,51 @@
+extends layout 
+
+
+block content
+  .profile
+    table#central(align='center')
+      tbody
+        tr
+          td
+            p
+              img(style='width: 150px;', src='/prof.jpg', alt='')
+          td
+            p
+              strong    
+          td
+            p
+              strong #{profile.name} 
+            p Department #{profile.department} 
+            p
+              strong Home Page: 
+              | <a href="https://www.cse.iitk.ac.in/users/nsrivast/">Professor Home_Page </a>
+  form(method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    if (unknownUser)
+      p Please log in to Rate
+    else
+      .form-group.row
+          label(class='col-md-2 col-form-label font-weight-bold', for='param1') param1
+          .col-md-4
+            input.form-control(type='number', min="0", max="5", name='param1', id='param1', autocomplete='name', autofocus=true)
+      .form-group.row
+          label(class='col-md-2 col-form-label font-weight-bold', for='param2') param2
+          .col-md-4
+            input.form-control(type='number', min="0", max="5", name='param2', id='param2', autocomplete='name', autofocus=true)
+      .form-group.row
+          label(class='col-md-2 col-form-label font-weight-bold', for='param3') param3
+          .col-md-4
+            input.form-control(type='number', min="0", max="5", name='param3', id='param3', autocomplete='name', autofocus=true)
+      .form-group.row
+          label(class='col-md-2 col-form-label font-weight-bold', for='param4') param4
+          .col-md-4
+            input.form-control(type='number', min="0", max="5", name='param4', id='param4', autocomplete='name', autofocus=true)
+      .form-group
+        .offset-md-2.col-md-8.p-1
+          button.btn.btn-primary(type='submit')
+            i.far.fa-envelope.fa-sm
+            | Send
+
+  
+
+

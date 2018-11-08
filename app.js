@@ -145,6 +145,8 @@ app.post('/account/delete', passportConfig.isAuthenticated, userController.postD
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
 app.get('/professor', profController.index);
 app.get('/professor/:profid', profController.getProf);
+app.get('/professor/:profid/rate', profController.getRateProf);
+app.post('/professor/:profid/rate', profController.postRateProf);
 app.get('/livesearch', livesearchController.index)
 
 

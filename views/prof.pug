@@ -59,10 +59,10 @@ block content
     h2 
       p(style='color:black;')
         b Comments About the Professor 
-    li
-      p The prof is chill in grading.
-    li
-      p Don't you to dare take his course :D 
+    ul 
+      each val in comments
+        li=val
+
 
   
 

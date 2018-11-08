@@ -13,6 +13,7 @@ const profSchema = mongoose.Schema({
     },
     courses: [String],
     rating: {
+        numRatings: Number,
         param1: Number,
         param2: Number,
         param3: Number,
