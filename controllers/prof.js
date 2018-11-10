@@ -13,6 +13,7 @@ exports.getProf = (req,res) => {
     if (err){console.log("Invalid Professor ID");}
     else{
       // console.log(prof.courses);
+      // console.log(prof.rating.toFixed(1))
       if (!req.user) {
         res.render('prof', {
           title: 'Professor',
@@ -32,6 +33,7 @@ exports.getProf = (req,res) => {
             return pro.id == profid;
           }).pop();
           has_rated = false;
+          
           if (pro)
           {
             console.log("Already rated!");

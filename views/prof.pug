@@ -38,30 +38,149 @@ block content
       h4
         a(href=href) Rate 
   h1 RATINGS 
-  p How well he teaches ? #{ratings.param1}
-  span.fa.fa-star.checked
-  span.fa.fa-star.checked
-  span.fa.fa-star.checked
-  span.fa.fa-star
-  span.fa.fa-star
-  p How fun is his research area ? #{ratings.param2}
-  span.fa.fa-star.checked
-  span.fa.fa-star.checked
-  span.fa.fa-star.checked
-  span.fa.fa-star.checked
-  span.fa.fa-star
-  p How he grades ? #{ratings.param3}
-  span.fa.fa-star.checked
-  span.fa.fa-star.checked
-  span.fa.fa-star.checked
-  span.fa.fa-star.checked
-  span.fa.fa-star.checked
-  p How strict he is about attendance/deadlines ? #{ratings.param4}
-  span.fa.fa-star.checked
-  span.fa.fa-star.checked
-  span.fa.fa-star
-  span.fa.fa-star
-  span.fa.fa-star
+  p How well he teaches ? #{ratings.param1.toFixed(1)}
+  if (ratings.param1 >= 4.5)
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    
+  else if (ratings.param1 >= 3.5)
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star
+    
+  else if (ratings.param1 >= 2.5)
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star
+    span.fa.fa-star
+    
+  else if (ratings.param1 >= 1.5)
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star.
+    span.fa.fa-star
+    span.fa.fa-star
+    
+  else if (ratings.param1 >= 0.5 )
+    span.fa.fa-star.checked
+    span.fa.fa-star.
+    span.fa.fa-star.
+    span.fa.fa-star
+    span.fa.fa-star 
+
+  p How fun is his research area ? #{ratings.param2.toFixed(1)}
+  if (ratings.param2 >= 4.5)
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    
+  else if (ratings.param2 >= 3.5)
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star
+    
+  else if (ratings.param2 >= 2.5)
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star
+    span.fa.fa-star
+    
+  else if (ratings.param2 >= 1.5)
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star.
+    span.fa.fa-star
+    span.fa.fa-star
+    
+  else if (ratings.param2 >= 0.5 )
+    span.fa.fa-star.checked
+    span.fa.fa-star.
+    span.fa.fa-star.
+    span.fa.fa-star
+    span.fa.fa-star 
+  
+  p How he grades ? #{ratings.param3.toFixed(1)}
+  if (ratings.param3 >= 4.5)
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    
+  else if (ratings.param3 >= 3.5)
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star
+    
+  else if (ratings.param3 >= 2.5)
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star
+    span.fa.fa-star
+    
+  else if (ratings.param3 >= 1.5)
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star.
+    span.fa.fa-star
+    span.fa.fa-star
+    
+  else if (ratings.param3 >= 0.5 )
+    span.fa.fa-star.checked
+    span.fa.fa-star.
+    span.fa.fa-star.
+    span.fa.fa-star
+    span.fa.fa-star 
+  p How strict he is about attendance/deadlines ? #{ratings.param4.toFixed(1)}
+  if (ratings.param4 >= 4.5)
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    
+  else if (ratings.param4 >= 3.5)
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star
+    
+  else if (ratings.param4 >= 2.5)
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star
+    span.fa.fa-star
+    
+  else if (ratings.param4 >= 1.5)
+    span.fa.fa-star.checked
+    span.fa.fa-star.checked
+    span.fa.fa-star.
+    span.fa.fa-star
+    span.fa.fa-star
+    
+  else if (ratings.param4 >= 0.5 )
+    span.fa.fa-star.checked
+    span.fa.fa-star.
+    span.fa.fa-star.
+    span.fa.fa-star
+    span.fa.fa-star 
+  
   style.
     .checked {
     color: orange;
