@@ -1,7 +1,48 @@
 extends layout
 
 block content
-  h1 Rate My Professor
+  h1 grade your professor
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+  style.
+    * {
+    box-sizing: border-box;
+    }
+    #myInput {
+    background-image: url('/search');
+    background-position: 10px 12px;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    width: 100%;
+    font-size: 20px;
+    padding: 12px 10px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+    }
+    #livesearch {
+    list-style-type: none;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    background-color: #f6f6f6;
+    padding: 12px 10px 12px 40px;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    display: block
+    margin: 0;
+    }
+    #myUL li a {
+    border: 1px solid #ddd;
+    margin-top: -1px; /* Prevent double borders */
+    background-color: #f6f6f6;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    display: block
+    }
+    #myUL li a:hover:not(.header) {
+    background-color: #eee;
+    }
   script.
     function showResult(str) {
     if (str.length==0) {
@@ -26,28 +67,28 @@ block content
     }
  
   form
-    input(type='text', size='30', onkeyup='showResult(this.value)')
+    input#myInput(type='text', placeholder='Search for a Professor' size='30', onkeyup='showResult(this.value)')
     #livesearch 
   p.lead Helpful
-  //-hr
-  //-.row
-    //-.col-md-6
-      //-h2 Heading
-      //-//-p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      //-p
-        //-a.btn.btn-raised(href='#', role='button') View details »
-    //-.col-md-6
-      //-h2 Heading
-      //-//-p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      //-p
-        //-a.btn.btn-raised(href='#', role='button') View details »
-    //-.col-md-6
-      //-h2 Heading
-      //-//-p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      //-p
-        //-a.btn.btn-raised(href='#', role='button') View details »
-    //-.col-md-6
-      //-h2 Heading
+  hr
+  .row
+    .col-md-6
+      h2 Heading
       //-p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      //-p
-        //-a.btn.btn-raised(href='#', role='button') View details »
+      p
+        a.btn.btn-raised(href='#', role='button') View details »
+    .col-md-6
+      h2 Heading
+      //-p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+      p
+        a.btn.btn-raised(href='#', role='button') View details »
+    .col-md-6
+      h2 Heading
+      //-p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+      p
+        a.btn.btn-raised(href='#', role='button') View details »
+    .col-md-6
+      h2 Heading
+      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+      p
+        a.btn.btn-raised(href='#', role='button') View details »

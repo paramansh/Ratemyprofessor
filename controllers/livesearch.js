@@ -14,8 +14,6 @@ exports.index = (req, res) => {
             NUM_DISPLAY_RESULTS = 3;
             professors.some((prof) => {
                 cnt++;
-                // response+= prof.profile.name;
-                //ideally link should be id!
                 response += "<a href=/professor/"+ prof.id + " >" + prof.profile.name + "</a>";
                 response+= "<br>";
                 return cnt >= NUM_DISPLAY_RESULTS;
