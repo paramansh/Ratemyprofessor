@@ -13,9 +13,10 @@ block content
     background-repeat: no-repeat;
     border-radius: 15px;
     width: 100%;
+    outline-width: 0;
     font-size: 20px;
     padding: 12px 10px 12px 40px;
-    border: 1px solid #ddd;
+    border: 4px solid #ddd;
     margin-bottom: 12px;
     }
     #livesearch {
@@ -43,6 +44,43 @@ block content
     #myUL li a:hover:not(.header) {
     background-color: #eee;
     }
+    .myimage {
+    display: block;
+    border-radius: 15px;
+    }
+    .imgcontainer {
+      width: 100%;
+      border-radius: 15px;
+    }
+    .imgoverlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: black;
+    }
+    .imgcontainer:hover .imgoverlay {
+    opacity: 0.85;
+    border-radius: 15px;
+    width: 100%;
+    }
+    .imgtext {
+    color: white;
+    font-size: 30px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    padding :20px;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    }
   script.
     function showResult(str) {
     if (str.length==0) {
@@ -69,26 +107,36 @@ block content
   form
     input#myInput(type='text', placeholder='Search for a Professor' size='30', onkeyup='showResult(this.value)')
     #livesearch 
-  p.lead Helpful
   hr
+  br
+  br
+  h2 How to Choose the Right Course?
+  br
   .row
     .col-md-6
-      h2 Heading
-      //-p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      p
-        a.btn.btn-raised(href='#', role='button') View details »
+      .imgcontainer
+        img.myimage(src='howtochoose.jpg', alt='How to Choose', style='width:100%;height:350px;')
+        .imgoverlay
+          .imgtext 
+            a(href='https://www.breezejmu.org/opinion/opinion-rate-my-professor-reaps-benefits-if-used-correctly/article_8252a312-31e1-11e8-b942-ef1ff25f8be3.html', target="_blank", style='text-decoration: none; color: white;') Rate my professor reaps benefits if used correctly      
+      //- a#myimg(href='https://www.wikihow.com/Choose-the-Right-Course', target="_blank")
+      //-   img.myimage(src='howtochoose.jpg', alt='How to Choose', style='width:100%;height:80%;border:0;')
     .col-md-6
-      h2 Heading
-      //-p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      p
-        a.btn.btn-raised(href='#', role='button') View details »
+      .imgcontainer
+        img.myimage(src='howtochoose2.jpg', alt='How to Choose', style='width:100%;height:350px;')
+        .imgoverlay
+          .imgtext 
+            a(href='http://www.statepress.com/article/2018/08/sp-opinion-students-should-not-soley-rely-on-rate-my-professors', target="_blank", style='text-decoration: none; color: white;') Students should not solely rely on Rate My Professors to pick classes
+      //- h2 
+      //- div(style='background-color:lightblue; width:100%; height:80%; border-radius: 15px; padding: 15px;')
+      //-   a(href="http://www.statepress.com/article/2018/08/sp-opinion-students-should-not-soley-rely-on-rate-my-professors", target="_blank") A word of caution!
     .col-md-6
-      h2 Heading
-      //-p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      p
-        a.btn.btn-raised(href='#', role='button') View details »
-    .col-md-6
-      h2 Heading
-      p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      p
-        a.btn.btn-raised(href='#', role='button') View details »
+    //-   h2 Heading
+    //-   p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+    //-   p
+    //-     a.btn.btn-raised(href='#', role='button') View details »
+    //- .col-md-6
+    //-   h2 Heading
+    //-   p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+    //-   p
+    //-     a.btn.btn-raised(href='#', role='button') View details »

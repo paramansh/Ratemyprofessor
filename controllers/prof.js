@@ -160,7 +160,9 @@ exports.postRateProf = (req,res) => {
       // prof.rating.param4 = 0;
       // prof.rating.numRatings = 0;
       
-      prof.comments.push(req.body.message);
+      if (req.body.message) {
+        prof.comments.push(req.body.message);
+      }
       console.log("comment check");
       prof.save(function (err, updatedProf) {
         if (err) console.log(err);
