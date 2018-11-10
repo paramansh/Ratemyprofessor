@@ -35,6 +35,7 @@ const userController = require('./controllers/user');
 const profController = require('./controllers/prof');
 const contactController = require('./controllers/contact');
 const livesearchController = require('./controllers/livesearch.js');
+const statsController = require('./controllers/stats.js');
 
 /**
  * API keys and Passport configuration.
@@ -148,6 +149,8 @@ app.get('/professor/:profid', profController.getProf);
 app.get('/professor/:profid/rate', profController.getRateProf);
 app.post('/professor/:profid/rate', profController.postRateProf);
 app.get('/livesearch', livesearchController.index)
+app.get('/about', homeController.about);
+app.get('/stats', statsController.index);
 
 
 /**

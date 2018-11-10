@@ -1,8 +1,8 @@
 .navbar.navbar-light.fixed-top.navbar-expand-md
   .container
     a.navbar-brand(href='/')
-      i.fas.fa-cube
-      | RateMyProf
+      i.far.fa-edit
+      | gradeYourProf
     button.navbar-toggler(type='button', data-toggle='collapse', data-target='.navbar-collapse')
       span.sr-only Toggle navigation
       span.navbar-toggler-icon
@@ -11,7 +11,7 @@
         li.nav-item(class=(title === 'Home') ? 'active' : undefined)
           a.nav-link(href='/') Home
         li.nav-item(class=(title === 'Professor Profile') ? 'active' : undefined)
-          a.nav-link(href='/professor') Professor
+          a.nav-link(href='/stats') Statistics
         li.nav-item(class=(title === 'About') ? 'active' : undefined)
           a.nav-link(href='/about') About
         li.nav-item(class=(title === 'Contact') ? 'active' : undefined)
