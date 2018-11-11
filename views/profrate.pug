@@ -11,45 +11,55 @@ block content
     //- return false;
     //- }
     }
-  .profile
-    table#central(align='center')
-      tbody
-        tr
-          td
-            p
-              img(style='width: 150px;', src='/prof.jpg', alt='')
-          td
-            p
-              strong    
-          td
-            p
-              strong #{profile.name} 
-            p Department #{profile.department} 
-            p
-              - var href = profile.homepage;
-              h4              
-                a(href=href) Homepage
+  //- .profile
+  //-   table#central(align='center')
+  //-     tbody
+  //-       tr
+  //-         td
+  //-           p
+  //-             img(style='width: 150px;', src='/prof.jpg', alt='')
+  //-         td
+  //-           p
+  //-             strong    
+  //-         td
+  //-           p
+  //-             strong #{profile.name} 
+  //-           p Department #{profile.department} 
+  //-           p
+  //-             - var href = profile.homepage;
+  //-             h4              
+  //-               a(href=href) Homepage
+  .row
+  .col-md-8
+    h1 #{profile.name} 
+    h4 Department: #{profile.department}
+    - var href = profile.homepage;
+    h4              
+      a(href=href) Homepage
+  hr
   form(name='ratingForm', method='POST', onsubmit="return validateForm()")
     input(type='hidden', name='_csrf', value=_csrf)
     if (unknownUser)
-      p Please log in to Rate
+      h4 Please 
+        a(href="/login") Login 
+        | to rate
     else
       .form-group.row
-          label(class='col-md-2 col-form-label font-weight-bold', for='param1') param1
-          .col-md-4
-            input.form-control(type='number', min="0", max="5", name='param1', id='param1', autocomplete='name', autofocus=true)
+          label(class='col-md-2 col-form-label font-weight-bold', for='param1') Teaching Skills
+          .col-md-2
+            input.form-control(placeholder='0-5', type='number', min="0", max="5", name='param1', id='param1', autocomplete='name', autofocus=true)
       .form-group.row
-          label(class='col-md-2 col-form-label font-weight-bold', for='param2') param2
-          .col-md-4
-            input.form-control(type='number', min="0", max="5", name='param2', id='param2', autocomplete='name', autofocus=true)
+          label(class='col-md-2 col-form-label font-weight-bold', for='param2') Research Work
+          .col-md-2
+            input.form-control(placeholder='0-5',type='number', min="0", max="5", name='param2', id='param2', autocomplete='name', autofocus=true)
       .form-group.row
-          label(class='col-md-2 col-form-label font-weight-bold', for='param3') param3
-          .col-md-4
-            input.form-control(type='number', min="0", max="5", name='param3', id='param3', autocomplete='name', autofocus=true)
+          label(class='col-md-2 col-form-label font-weight-bold', for='param3') Grading
+          .col-md-2
+            input.form-control(placeholder='0-5',type='number', min="0", max="5", name='param3', id='param3', autocomplete='name', autofocus=true)
       .form-group.row
-          label(class='col-md-2 col-form-label font-weight-bold', for='param4') param4
-          .col-md-4
-            input.form-control(type='number', min="0", max="5", name='param4', id='param4', autocomplete='name', autofocus=true)
+          label(class='col-md-2 col-form-label font-weight-bold', for='param4') Attendence/Deadlines
+          .col-md-2
+            input.form-control(placeholder='0-5',type='number', min="0", max="5", name='param4', id='param4', autocomplete='name', autofocus=true)
       .form-group.row
           label(class='col-md-2 col-form-label font-weight-bold', for='message') Your Comments (800 chars)
           .col-md-8
