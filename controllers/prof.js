@@ -7,73 +7,80 @@ exports.index = (req, res) => {
   });
 };
 
-exports.getProf = (req,res) => {
+exports.getProf = (req, res) => {
   profid = req.params.profid; // actually the email 
-  Professor.findOne({id: profid}, (err, prof) => {
-    if (err){console.log("Invalid Professor ID");}
-    else{
-      // console.log(prof.courses);
-      // console.log(prof.rating.toFixed(1))
-      if (!req.user) {
-        res.render('prof', {
-          title: 'Professor',
-          profile: prof.profile,
-          comments: prof.comments,
-          profid: profid,
-          ratings: prof.rating,
-          has_rated: false,
-        });
+  Professor.findOne({ id: profid }, (err, prof) => {
+    if (err) {
+      console.log("Problem in DB search for prof");
+    }
+    else {
+      if (prof) {
+        if (!req.user) {
+          res.render('prof', {
+            title: 'Professor',
+            profile: prof.profile,
+            comments: prof.comments,
+            profid: profid,
+            ratings: prof.rating,
+            has_rated: false,
+          });
+        }
+        else {
+          User.findById(req.user.id, (err, user) => {
+            if (err) {
+              console.log("AUTH ERROR");
+            }
+            var pro = user.ratings.filter(function (pro) {
+              return pro.id == profid;
+            }).pop();
+            has_rated = false;
+  
+            if (pro) {
+              console.log("Already rated!");
+              console.log(pro);
+              res.render('prof', {
+                title: 'Professor',
+                profile: prof.profile,
+                comments: prof.comments,
+                profid: profid,
+                ratings: prof.rating,
+                has_rated: true,
+                user_ratings: pro,
+              });
+            }
+            else {
+              res.render('prof', {
+                title: 'Professor',
+                profile: prof.profile,
+                profid: profid,
+                ratings: prof.rating,
+                comments: prof.comments,
+                has_rated: false,
+              });
+            }
+          });
+        }
       }
       else {
-        User.findById(req.user.id, (err, user) => {
-          if (err) { 
-            console.log("AUTH ERROR");
-          }
-          var pro = user.ratings.filter(function (pro) {
-            return pro.id == profid;
-          }).pop();
-          has_rated = false;
-          
-          if (pro)
-          {
-            console.log("Already rated!");
-            console.log(pro);
-            res.render('prof', {
-              title: 'Professor',
-              profile: prof.profile,
-              comments: prof.comments,
-              profid: profid,
-              ratings: prof.rating,
-              has_rated: true,
-              user_ratings: pro,
-            });
-          }
-          else {
-            res.render('prof', {
-              title: 'Professor',
-              profile: prof.profile,
-              profid: profid,
-              ratings: prof.rating,
-              comments: prof.comments,
-              has_rated: false, 
-            });
-          }          
+        console.log("Invalid Professor ID");
+        res.render('error', {
+          title: 'Error',
         });
       }
     }
   });
 }
 
-exports.getRateProf = (req,res) => {
+exports.getRateProf = (req, res) => {
   profid = req.params.profid; // actually the email id
   const unknownUser = !(req.user);
   console.log(unknownUser);
-  Professor.findOne({id: profid}, (err, prof) => {
-    if (err){console.log("Invalid Professor ID");}
-    else{
+  Professor.findOne({ id: profid }, (err, prof) => {
+    if (err) { console.log("Invalid Professor ID"); }
+    else {
       if (!unknownUser) {
         User.findById(req.user.id, (err, user) => {
-          if (err) { 
+          if (err) {
             console.log("AUTH ERROR");
           }
           var pro = user.ratings.filter(function (pro) {
@@ -81,8 +88,7 @@ exports.getRateProf = (req,res) => {
           }).pop();
           has_rated = false;
           // if (pro)
-          if (pro)
-          {
+          if (pro) {
             console.log("Already rated!");
             res.redirect('/professor/' + profid);
           }
@@ -91,42 +97,50 @@ exports.getRateProf = (req,res) => {
               title: 'Professor',
               profile: prof.profile,
               unknownUser,
-              });
-          }          
+            });
+          }
         });
-      } 
+      }
       else {
         res.render('profrate', {
-        title: 'Professor',
-        profile: prof.profile,
-        unknownUser,
+          title: 'Professor',
+          profile: prof.profile,
+          unknownUser,
         });
       }
     }
   });
 }
 
-exports.postRateProf = (req,res) => {
-  console.log("heeeeeeeeee")
-  profid = req.params.profid; // actually the email id
-  // req.assert('param1', 'param cannot be blank').len(4);
-  Professor.findOne({id: profid}, (err, prof) => {
-    if (err){console.log("Invalid Professor ID");}
-    else{
+exports.postRateProf = (req, res) => {
+  // req.assert('message', 'Comment cannot be blank').notEmpty();
+  req.assert('param1', 'First field is empty').notEmpty();
+  req.assert('param2', 'Second field is empty').notEmpty();
+  req.assert('param3', 'Third field is empty').notEmpty();
+  req.assert('param4', 'Fourth field is empty').notEmpty();
+  profid = req.params.profid;
+  const errors = req.validationErrors();
+  if (errors) {
+    req.flash('errors', errors);
+    return res.redirect('/professor/'+profid+'/rate');
+  }
+  
+  Professor.findOne({ id: profid }, (err, prof) => {
+    if (err) { console.log("Invalid Professor ID"); }
+    else {
       console.log(req.user);
       if (!req.user) {
         console.log("Should be logged In");
       }
       User.findById(req.user.id, (err, user) => {
-        if (err) { 
+        if (err) {
           // return next(err);
           console.log("AUTH ERROR");
         }
         var pro = user.ratings.filter(function (pro) {
           return pro.id == profid;
         }).pop();
-        if (pro)
-        {
+        if (pro) {
           console.log("Already in post rated!");
         }
 
@@ -150,16 +164,16 @@ exports.postRateProf = (req,res) => {
       numRatings = prof.rating.numRatings;
       prof.rating.numRatings += 1;
 
-      prof.rating.param1 = (prof.rating.param1 * numRatings + Number(req.body.param1))/(numRatings+1);
-      prof.rating.param2 = (prof.rating.param2 * numRatings + Number(req.body.param2))/(numRatings+1);
-      prof.rating.param3 = (prof.rating.param3 * numRatings + Number(req.body.param3))/(numRatings+1);
-      prof.rating.param4 = (prof.rating.param4 * numRatings + Number(req.body.param4))/(numRatings+1);
+      prof.rating.param1 = (prof.rating.param1 * numRatings + Number(req.body.param1)) / (numRatings + 1);
+      prof.rating.param2 = (prof.rating.param2 * numRatings + Number(req.body.param2)) / (numRatings + 1);
+      prof.rating.param3 = (prof.rating.param3 * numRatings + Number(req.body.param3)) / (numRatings + 1);
+      prof.rating.param4 = (prof.rating.param4 * numRatings + Number(req.body.param4)) / (numRatings + 1);
       // prof.rating.param1 = 0;
       // prof.rating.param2 = 0;
       // prof.rating.param3 = 0;
       // prof.rating.param4 = 0;
       // prof.rating.numRatings = 0;
-      
+
       if (req.body.message) {
         prof.comments.push(req.body.message);
       }
@@ -168,7 +182,7 @@ exports.postRateProf = (req,res) => {
         if (err) console.log(err);
         else console.log(req.body.message);
       });
-      res.redirect('/professor/'+profid);
+      res.redirect('/professor/' + profid);
     }
   });
 }

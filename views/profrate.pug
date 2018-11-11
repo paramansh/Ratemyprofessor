@@ -2,6 +2,15 @@ extends layout
 
 
 block content
+  script.
+    function validateForm() {
+      console.log("ik");
+    //- var x = document.forms["myForm"]["fname"].value;
+    //- if (x == "") {
+    //- alert("Name must be filled out");
+    //- return false;
+    //- }
+    }
   .profile
     table#central(align='center')
       tbody
@@ -20,7 +29,7 @@ block content
               - var href = profile.homepage;
               h4              
                 a(href=href) Homepage
-  form(method='POST')
+  form(name='ratingForm', method='POST', onsubmit="return validateForm()")
     input(type='hidden', name='_csrf', value=_csrf)
     if (unknownUser)
       p Please log in to Rate
@@ -42,9 +51,9 @@ block content
           .col-md-4
             input.form-control(type='number', min="0", max="5", name='param4', id='param4', autocomplete='name', autofocus=true)
       .form-group.row
-          label(class='col-md-2 col-form-label font-weight-bold', for='message') Your Comments
+          label(class='col-md-2 col-form-label font-weight-bold', for='message') Your Comments (800 chars)
           .col-md-8
-            textarea.form-control(name='message', id='message', rows='3', autofocus=(!unknownUser).toString())
+            textarea.form-control(name='message', maxlength="800", id='message', rows='3', autofocus=(!unknownUser).toString())
       
       .form-group
         .offset-md-2.col-md-8.p-1

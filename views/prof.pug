@@ -8,189 +8,247 @@ extends layout
 //-   |
 //-   h2 Rating
 block content
-  .profile
-    table#central(align='center')
-      tbody
-        tr
-          td
-            p
-              img(style='width: 150px;', src='/prof.jpg', alt='')
-          td
-            p
-              strong    
-          td
-            p
-              strong #{profile.name} 
-            p Department #{profile.department} 
-            p
-              - var href = profile.homepage;
-              h4              
-                a(href=href) Homepage
-  if (has_rated)
-    h3 You have already rated
-      //- h2 <a href="/professor/"+profid + "/rate/"> Update Rating </a> 
-      h4 param1 = #{user_ratings.param1}
-      h4 param2 = #{user_ratings.param2}
-      h4 param3 = #{user_ratings.param3}
-      h4 param4 = #{user_ratings.param4}
-  else
-      - var href = "/professor/" + profid+"/rate/";
-      h4
-        a(href=href) Rate 
-  h1 RATINGS 
-  p How well he teaches ? #{ratings.param1.toFixed(1)}
-  if (ratings.param1 >= 4.5)
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    
-  else if (ratings.param1 >= 3.5)
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star
-    
-  else if (ratings.param1 >= 2.5)
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star
-    span.fa.fa-star
-    
-  else if (ratings.param1 >= 1.5)
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star.
-    span.fa.fa-star
-    span.fa.fa-star
-    
-  else if (ratings.param1 >= 0.5 )
-    span.fa.fa-star.checked
-    span.fa.fa-star.
-    span.fa.fa-star.
-    span.fa.fa-star
-    span.fa.fa-star 
-
-  p How fun is his research area ? #{ratings.param2.toFixed(1)}
-  if (ratings.param2 >= 4.5)
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    
-  else if (ratings.param2 >= 3.5)
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star
-    
-  else if (ratings.param2 >= 2.5)
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star
-    span.fa.fa-star
-    
-  else if (ratings.param2 >= 1.5)
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star.
-    span.fa.fa-star
-    span.fa.fa-star
-    
-  else if (ratings.param2 >= 0.5 )
-    span.fa.fa-star.checked
-    span.fa.fa-star.
-    span.fa.fa-star.
-    span.fa.fa-star
-    span.fa.fa-star 
-  
-  p How he grades ? #{ratings.param3.toFixed(1)}
-  if (ratings.param3 >= 4.5)
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    
-  else if (ratings.param3 >= 3.5)
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star
-    
-  else if (ratings.param3 >= 2.5)
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star
-    span.fa.fa-star
-    
-  else if (ratings.param3 >= 1.5)
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star.
-    span.fa.fa-star
-    span.fa.fa-star
-    
-  else if (ratings.param3 >= 0.5 )
-    span.fa.fa-star.checked
-    span.fa.fa-star.
-    span.fa.fa-star.
-    span.fa.fa-star
-    span.fa.fa-star 
-  p How strict he is about attendance/deadlines ? #{ratings.param4.toFixed(1)}
-  if (ratings.param4 >= 4.5)
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    
-  else if (ratings.param4 >= 3.5)
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star
-    
-  else if (ratings.param4 >= 2.5)
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star
-    span.fa.fa-star
-    
-  else if (ratings.param4 >= 1.5)
-    span.fa.fa-star.checked
-    span.fa.fa-star.checked
-    span.fa.fa-star.
-    span.fa.fa-star
-    span.fa.fa-star
-    
-  else if (ratings.param4 >= 0.5 )
-    span.fa.fa-star.checked
-    span.fa.fa-star.
-    span.fa.fa-star.
-    span.fa.fa-star
-    span.fa.fa-star 
-  
   style.
+    .ratecontainer {
+      position: relative;
+      width: 100%;
+      background-color: #f6f6f6;
+      border-radius: 5px;
+      padding: 10px;
+      margin-top: 10px;
+      height: 140px;
+    }
     .checked {
     color: orange;
     }
+    .ratetext {
+    font-size: 20px;
+    position: absolute;
+    top: 15%;
+    width: 80px;
+    height: 80px;
+    background-color: #4f37ca82;
+    right: 20px;
+    text-align: center;
+    padding :20px;
+    border-radius: 20px;
+    }
+    
+
+  //- .profile
+  //-   table#central(align='center')
+  //-     tbody
+  //-       tr
+  //-         td
+  //-           p
+  //-             img(style='width: 150px;', src='/prof.jpg', alt='')
+  //-         td
+  //-           p
+  //-             strong    
+  //-         td
+  //-           p
+  //-             h2 #{profile.name} 
+  //-           p Department #{profile.department} 
+  //-           p
+  //-             - var href = profile.homepage;
+  //-             h4              
+  //-               a(href=href) Homepage
+  .row
+    .col-md-8
+      h1 #{profile.name} 
+      h4 Department: #{profile.department}
+      - var href = profile.homepage;
+      h4              
+        a(href=href) Homepage
+  hr
+  .row
+    .col-md-8
+      h2 Ratings 
+      .ratecontainer
+        h5 Teaching Skills
+        p(style='margin-right: 25%;') Describes the overall quality of teaching of the professor. (0=terrible; 5=great)
+        .ratetext
+          p #{ratings.param1.toFixed(1)}
+        if (ratings.param1 >= 4.5)
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          
+        else if (ratings.param1 >= 3.5)
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star
+          
+        else if (ratings.param1 >= 2.5)
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star
+          span.fa.fa-star
+          
+        else if (ratings.param1 >= 1.5)
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.
+          span.fa.fa-star
+          span.fa.fa-star
+          
+        else if (ratings.param1 >= 0.5 )
+          span.fa.fa-star.checked
+          span.fa.fa-star.
+          span.fa.fa-star.
+          span.fa.fa-star
+          span.fa.fa-star 
+        
+      .ratecontainer    
+        h5 Research Work
+        p(style='margin-right: 25%;') Experience as project/thesis mentor. (0=awful; 5=awesome)
+        .ratetext
+          p #{ratings.param2.toFixed(1)}
+        if (ratings.param2 >= 4.5)
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          
+        else if (ratings.param2 >= 3.5)
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star
+          
+        else if (ratings.param2 >= 2.5)
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star
+          span.fa.fa-star
+          
+        else if (ratings.param2 >= 1.5)
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.
+          span.fa.fa-star
+          span.fa.fa-star
+          
+        else if (ratings.param2 >= 0.5 )
+          span.fa.fa-star.checked
+          span.fa.fa-star.
+          span.fa.fa-star.
+          span.fa.fa-star
+          span.fa.fa-star 
+      .ratecontainer
+        h5 Grading
+        p(style='margin-right: 25%;') Describes how generous the professor is with awarding grades. ; 0=Not generous at all; 5= Extremely generous )
+        .ratetext
+          p #{ratings.param3.toFixed(1)}
+        if (ratings.param3 >= 4.5)
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          
+        else if (ratings.param3 >= 3.5)
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star
+          
+        else if (ratings.param3 >= 2.5)
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star
+          span.fa.fa-star
+          
+        else if (ratings.param3 >= 1.5)
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.
+          span.fa.fa-star
+          span.fa.fa-star
+          
+        else if (ratings.param3 >= 0.5 )
+          span.fa.fa-star.checked
+          span.fa.fa-star.
+          span.fa.fa-star.
+          span.fa.fa-star
+          span.fa.fa-star 
+      .ratecontainer
+        h4 Attendance / Deadlines
+        p(style='margin-right: 25%;') Course Workload (5 is very hectic and 0 is least hectic)
+        .ratetext
+          p #{ratings.param4.toFixed(1)}
+        if (ratings.param4 >= 4.5)
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          
+        else if (ratings.param4 >= 3.5)
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star
+          
+        else if (ratings.param4 >= 2.5)
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star
+          span.fa.fa-star
+          
+        else if (ratings.param4 >= 1.5)
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.
+          span.fa.fa-star
+          span.fa.fa-star
+          
+        else if (ratings.param4 >= 0.5 )
+          span.fa.fa-star.checked
+          span.fa.fa-star.
+          span.fa.fa-star.
+          span.fa.fa-star
+          span.fa.fa-star 
+    .col-md-2 
+    .col-md-2
+      if (has_rated)
+        h5 You have already rated
+          //- h2 <a href="/professor/"+profid + "/rate/"> Update Rating </a> 
+        .ratecontainer
+          .ratetext
+            p #{user_ratings.param1}
+        .ratecontainer
+          .ratetext
+            p #{user_ratings.param2}
+        .ratecontainer
+          .ratetext
+            p #{user_ratings.param3}
+        .ratecontainer
+          .ratetext
+            p #{user_ratings.param4}
+      else
+        div(style='margin-top: 100px; padding:10px; background-color: #f6f6f6;')
+          h5 You haven't yet rated!
+            - var href = "/professor/" + profid+"/rate/";
+            h4
+              a.btn.btn-primary(href=href, style='font-size: 30px;margin-top:20px;') Rate 
+    
   .pb-2.mt-2.mb-4.border-bottom
-  div(style='background-color:yellow;color:red;padding:20px;')
-    h2 
-      p(style='color:black;')
-        b Comments About the Professor 
-    ul 
+  div(style='background-color:#E6E6FA;padding:20px;border-radius:15px;')
+    h3 Comments About the Professor 
+    ul(style='font-size: 20px;')
       each val in comments
         li=val
 
