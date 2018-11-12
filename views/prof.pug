@@ -66,7 +66,7 @@ block content
       h2 Ratings 
       .ratecontainer
         h5 Teaching Skills
-        p(style='margin-right: 25%;') Describes the overall quality of teaching of the professor. (0=terrible; 5=great)
+        p(style='margin-right: 25%;') Rate the overall quality of teaching on a scale of 0-5. 0 is worst and 5 is best.
         .ratetext
           p #{ratings.param1.toFixed(1)}
         if (ratings.param1 >= 4.5)
@@ -103,49 +103,10 @@ block content
           span.fa.fa-star.
           span.fa.fa-star
           span.fa.fa-star 
-        
-      .ratecontainer    
-        h5 Research Work
-        p(style='margin-right: 25%;') Experience as project/thesis mentor. (0=awful; 5=awesome)
-        .ratetext
-          p #{ratings.param2.toFixed(1)}
-        if (ratings.param2 >= 4.5)
-          span.fa.fa-star.checked
-          span.fa.fa-star.checked
-          span.fa.fa-star.checked
-          span.fa.fa-star.checked
-          span.fa.fa-star.checked
-          
-        else if (ratings.param2 >= 3.5)
-          span.fa.fa-star.checked
-          span.fa.fa-star.checked
-          span.fa.fa-star.checked
-          span.fa.fa-star.checked
-          span.fa.fa-star
-          
-        else if (ratings.param2 >= 2.5)
-          span.fa.fa-star.checked
-          span.fa.fa-star.checked
-          span.fa.fa-star.checked
-          span.fa.fa-star
-          span.fa.fa-star
-          
-        else if (ratings.param2 >= 1.5)
-          span.fa.fa-star.checked
-          span.fa.fa-star.checked
-          span.fa.fa-star.
-          span.fa.fa-star
-          span.fa.fa-star
-          
-        else if (ratings.param2 >= 0.5 )
-          span.fa.fa-star.checked
-          span.fa.fa-star.
-          span.fa.fa-star.
-          span.fa.fa-star
-          span.fa.fa-star 
+      
       .ratecontainer
         h5 Grading
-        p(style='margin-right: 25%;') Describes how generous the professor is with awarding grades. ; 0=Not generous at all; 5= Extremely generous )
+        p(style='margin-right: 25%;') Rate how generous the professor is with awarding grades. 0 is the least generous and 5 is most generous.
         .ratetext
           p #{ratings.param3.toFixed(1)}
         if (ratings.param3 >= 4.5)
@@ -183,8 +144,8 @@ block content
           span.fa.fa-star
           span.fa.fa-star 
       .ratecontainer
-        h4 Attendance / Deadlines
-        p(style='margin-right: 25%;') Course Workload (5 is very hectic and 0 is least hectic)
+        h5 Course Workload
+        p(style='margin-right: 25%;') Rate how hectic the course workload is. 0 is least hectic and 5 is extremely hectic.
         .ratetext
           p #{ratings.param4.toFixed(1)}
         if (ratings.param4 >= 4.5)
@@ -221,10 +182,51 @@ block content
           span.fa.fa-star.
           span.fa.fa-star
           span.fa.fa-star 
+      .ratecontainer    
+        h5 Overall Experience
+        p(style='margin-right: 25%;') How likely are you to recommend someone to take this professor’s course. 0 is least likely and 5 is highly likely.
+        .ratetext
+          p #{ratings.param2.toFixed(1)}
+        if (ratings.param2 >= 4.5)
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          
+        else if (ratings.param2 >= 3.5)
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star
+          
+        else if (ratings.param2 >= 2.5)
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star
+          span.fa.fa-star
+          
+        else if (ratings.param2 >= 1.5)
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.
+          span.fa.fa-star
+          span.fa.fa-star
+          
+        else if (ratings.param2 >= 0.5 )
+          span.fa.fa-star.checked
+          span.fa.fa-star.
+          span.fa.fa-star.
+          span.fa.fa-star
+          span.fa.fa-star 
+    
     .col-md-2 
     .col-md-2
       if (has_rated)
-        h5 You have already rated
+        br
+        h5 Your ratings
           //- h2 <a href="/professor/"+profid + "/rate/"> Update Rating </a> 
         .ratecontainer
           .ratetext
@@ -240,10 +242,12 @@ block content
             p #{user_ratings.param4}
       else
         div(style='margin-top: 100px; padding:10px; background-color: #f6f6f6;')
-          h5 You haven't yet rated!
+          p Click the rate button below to rate this professor. Your ratings and written reviews remain anonymous to everyone else.
             - var href = "/professor/" + profid+"/rate/";
             h4
-              a.btn.btn-primary(href=href, style='font-size: 30px;margin-top:20px;') Rate 
+              a.btn.btn-primary(href=href, style='font-size: 25px;margin-top:20px;')
+                i.far.fa-edit
+                |  Rate 
     
   .pb-2.mt-2.mb-4.border-bottom
   div(style='background-color:#E6E6FA;padding:20px;border-radius:15px;')
