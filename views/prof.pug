@@ -68,7 +68,10 @@ block content
         h5 Teaching Skills
         p(style='margin-right: 25%;') Rate the overall quality of teaching on a scale of 0-5. 0 is worst and 5 is best.
         .ratetext
-          p #{ratings.param1.toFixed(1)}
+          if (ratings.numRatings)
+            p #{ratings.param1.toFixed(1)}
+          else
+            p N/A
         if (ratings.param1 >= 4.5)
           span.fa.fa-star.checked
           span.fa.fa-star.checked
@@ -108,7 +111,52 @@ block content
         h5 Grading
         p(style='margin-right: 25%;') Rate how generous the professor is with awarding grades. 0 is the least generous and 5 is most generous.
         .ratetext
-          p #{ratings.param3.toFixed(1)}
+          if (ratings.numRatings)
+            p #{ratings.param2.toFixed(1)}
+          else
+            p N/A
+        if (ratings.param2 >= 4.5)
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          
+        else if (ratings.param2 >= 3.5)
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star
+          
+        else if (ratings.param2 >= 2.5)
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star
+          span.fa.fa-star
+          
+        else if (ratings.param2 >= 1.5)
+          span.fa.fa-star.checked
+          span.fa.fa-star.checked
+          span.fa.fa-star.
+          span.fa.fa-star
+          span.fa.fa-star
+          
+        else if (ratings.param2 >= 0.5 )
+          span.fa.fa-star.checked
+          span.fa.fa-star.
+          span.fa.fa-star.
+          span.fa.fa-star
+          span.fa.fa-star 
+      .ratecontainer
+        h5 Course Workload
+        p(style='margin-right: 25%;') Rate how hectic the course workload is. 0 is extremely hectic and 5 is least hectic.
+        .ratetext
+          if (ratings.numRatings)
+            p #{ratings.param3.toFixed(1)}
+          else
+            p N/A
         if (ratings.param3 >= 4.5)
           span.fa.fa-star.checked
           span.fa.fa-star.checked
@@ -143,11 +191,14 @@ block content
           span.fa.fa-star.
           span.fa.fa-star
           span.fa.fa-star 
-      .ratecontainer
-        h5 Course Workload
-        p(style='margin-right: 25%;') Rate how hectic the course workload is. 0 is least hectic and 5 is extremely hectic.
+      .ratecontainer    
+        h5 Overall Experience
+        p(style='margin-right: 25%;') How likely are you to recommend someone to take this professor’s course. 0 is least likely and 5 is highly likely.
         .ratetext
-          p #{ratings.param4.toFixed(1)}
+          if (ratings.numRatings)
+            p #{ratings.param4.toFixed(1)}
+          else
+            p N/A
         if (ratings.param4 >= 4.5)
           span.fa.fa-star.checked
           span.fa.fa-star.checked
@@ -177,45 +228,6 @@ block content
           span.fa.fa-star
           
         else if (ratings.param4 >= 0.5 )
-          span.fa.fa-star.checked
-          span.fa.fa-star.
-          span.fa.fa-star.
-          span.fa.fa-star
-          span.fa.fa-star 
-      .ratecontainer    
-        h5 Overall Experience
-        p(style='margin-right: 25%;') How likely are you to recommend someone to take this professor’s course. 0 is least likely and 5 is highly likely.
-        .ratetext
-          p #{ratings.param2.toFixed(1)}
-        if (ratings.param2 >= 4.5)
-          span.fa.fa-star.checked
-          span.fa.fa-star.checked
-          span.fa.fa-star.checked
-          span.fa.fa-star.checked
-          span.fa.fa-star.checked
-          
-        else if (ratings.param2 >= 3.5)
-          span.fa.fa-star.checked
-          span.fa.fa-star.checked
-          span.fa.fa-star.checked
-          span.fa.fa-star.checked
-          span.fa.fa-star
-          
-        else if (ratings.param2 >= 2.5)
-          span.fa.fa-star.checked
-          span.fa.fa-star.checked
-          span.fa.fa-star.checked
-          span.fa.fa-star
-          span.fa.fa-star
-          
-        else if (ratings.param2 >= 1.5)
-          span.fa.fa-star.checked
-          span.fa.fa-star.checked
-          span.fa.fa-star.
-          span.fa.fa-star
-          span.fa.fa-star
-          
-        else if (ratings.param2 >= 0.5 )
           span.fa.fa-star.checked
           span.fa.fa-star.
           span.fa.fa-star.
