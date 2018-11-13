@@ -9,11 +9,48 @@ block content
       background-color: #f6f6f6;
       border-radius: 15px;
       padding: 30px;
-      //- margin: 15px;
+      margin: 15px;
+    }
+    .ratetext {
+      font-size: 20px;
+      position: absolute;
+      top: 25%;
+      width: 80px;
+      height: 80px;
+      background-color: #4f37ca82;
+      right: 20px;
+      text-align: center;
+      padding :20px;
+      border-radius: 20px;
     }
   
   .row
     .col-md-6
       .bestcontainer
+        h3(style="font-weight: bold; color: #5858a6;") Best Teacher
+        h4 #{prof1.profile.name}
+        h4 Department: #{prof1.profile.department}
+        .ratetext 
+          p #{prof1.rating.param1.toFixed(1)}
+    .col-md-6
+      .bestcontainer
         h3(style="font-weight: bold; color: #5858a6;") Generous Grader
-        h4 Sandeep Shukla
+        h4 #{prof2.profile.name}
+        h4 Department: #{prof2.profile.department}
+        .ratetext 
+          p #{prof2.rating.param2.toFixed(1)}
+  .row
+    .col-md-6
+      .bestcontainer
+        h3(style="font-weight: bold; color: #5858a6;") No Homework
+        h4 #{prof3.profile.name}
+        h4 Department: #{prof3.profile.department}
+        .ratetext 
+          p #{prof3.rating.param3.toFixed(1)}
+    .col-md-6
+      .bestcontainer
+        h3(style="font-weight: bold; color: #5858a6;") Most Recommended
+        h4 #{prof4.profile.name}
+        h4 Department: #{prof4.profile.department}
+        .ratetext 
+          p #{prof4.rating.param4.toFixed(1)}
