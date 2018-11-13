@@ -91,7 +91,7 @@ exports.postSignup = (req, res, next) => {
     req.flash('errors', errors);
     return res.redirect('/signup');
   }
-
+  console.log(req.body.password);
   const user = new User({
     email: req.body.email,
     password: req.body.password
